@@ -1,0 +1,64 @@
+.wrapper {
+  @apply flex flex-col min-h-screen bg-gray-50;
+}
+
+.header {
+  @apply text-4xl font-bold text-white bg-blue-600 py-5 text-center shadow-md;
+}
+
+.container {
+  @apply flex flex-col items-center justify-center flex-grow px-6 py-12;
+}
+
+.card {
+  @apply w-full max-w-2xl bg-white p-8 rounded-lg shadow-lg text-center;
+}
+
+.title {
+  @apply text-2xl font-semibold text-gray-800 mb-6;
+}
+
+.input {
+  @apply block w-full py-3 px-4 border border-gray-300 rounded-md bg-white text-gray-700 focus:ring-2 focus:ring-blue-400 outline-none transition-all duration-300;
+}
+
+.errorMessage {
+  @apply text-red-500 text-lg mt-3;
+}
+
+/* Image Preview Styles */
+.imagePreviewContainer {
+  @apply w-full mt-6 p-5 bg-gray-100 rounded-lg shadow-md text-center;
+}
+
+.previewTitle {
+  @apply text-lg font-semibold text-gray-700 mb-3;
+}
+
+.previewImage {
+  @apply max-w-full h-auto rounded-lg border border-gray-300 shadow-sm;
+}
+
+.outputContainer {
+  @apply w-full mt-6 p-5 bg-gray-100 rounded-lg shadow-md;
+}
+
+.outputTitle {
+  @apply text-lg font-semibold text-gray-700 mb-3;
+}
+
+.textarea {
+  @apply w-full h-40 p-3 border border-gray-300 rounded-md text-gray-700 font-mono bg-white resize-none focus:ring-2 focus:ring-blue-400 outline-none;
+}
+
+.copyButton {
+  @apply flex items-center justify-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-md mt-4 transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
+
+.copyIcon {
+  @apply text-lg;
+}
+
+.footer {
+  @apply text-center text-gray-600 py-4 text-sm bg-white shadow-inner;
+}
