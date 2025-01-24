@@ -8,12 +8,13 @@ import {
   FaLinkedin,
   FaRegCopy,
 } from "react-icons/fa";
+import Preview from "../preview";
 
 const FileToBase64Converter = () => {
   const [base64, setBase64] = useState("");
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
-  const [preview, setPreview] = useState(null);
+  const [previewData, setPreviewData] = useState(null);
   const [fileType, setFileType] = useState("");
 
   const handleFileChange = (e) => {
@@ -25,39 +26,13 @@ const FileToBase64Converter = () => {
 
     reader.onloadend = () => {
       setBase64(reader.result);
+      setPreviewData(reader.result);
       setError("");
-
-      if (file.type.startsWith("image/")) {
-        setPreview(
-          <img
-            src={reader.result}
-            alt="Preview"
-            className={styles.previewImage}
-          />
-        );
-      } else if (file.type === "application/pdf") {
-        setPreview(
-          <iframe
-            src={reader.result}
-            className={styles.pdfPreview}
-            title="PDF Preview"
-          />
-        );
-      } else if (file.type.startsWith("text/") || file.name.endsWith(".json")) {
-        setPreview(
-          <textarea
-            className={styles.textPreview}
-            value={reader.result}
-            readOnly
-          />
-        );
-      } else {
-        setPreview(<p className={styles.unsupported}>Preview not available</p>);
-      }
     };
 
     reader.onerror = () => {
       setError("Failed to convert file to Base64");
+      setPreviewData(null);
     };
 
     reader.readAsDataURL(file);
@@ -98,12 +73,10 @@ const FileToBase64Converter = () => {
             )}
           </div>
 
-          {/* Right Section: Preview */}
+          {/* Right Section: Preview Component */}
           <div className={styles.rightSection}>
             <h3 className={styles.previewTitle}>File Preview:</h3>
-            {preview || (
-              <p className={styles.noPreview}>No Preview Available</p>
-            )}
+            <Preview previewData={previewData} fileType={fileType} />
           </div>
         </div>
       </main>
