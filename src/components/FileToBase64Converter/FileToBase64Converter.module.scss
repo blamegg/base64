@@ -1,64 +1,113 @@
 .wrapper {
-  @apply flex flex-col min-h-screen bg-gray-50;
+  @apply flex flex-col min-h-screen bg-gray-50 text-gray-800;
 }
 
+/* Header */
 .header {
-  @apply text-4xl font-bold text-white bg-blue-600 py-5 text-center shadow-md;
+  @apply bg-gradient-to-r from-blue-600 to-blue-800 text-white py-6 text-center shadow-lg text-4xl font-extrabold tracking-wide uppercase;
 }
 
+/* Main Container */
 .container {
-  @apply flex flex-col items-center justify-center flex-grow px-6 py-12;
+  @apply flex-grow flex items-center justify-center px-6 py-12;
 }
 
-.card {
-  @apply w-full max-w-2xl bg-white p-8 rounded-lg shadow-lg text-center;
+/* Grid Layout */
+.converterGrid {
+  @apply grid grid-cols-2 gap-8 w-full max-w-5xl bg-white p-8 rounded-xl shadow-xl;
+
+  /* Mobile Responsive */
+  @screen md {
+    @apply grid-cols-1;
+  }
+}
+
+/* Left Section: Input & Output */
+.leftSection {
+  @apply flex flex-col gap-6;
 }
 
 .title {
-  @apply text-2xl font-semibold text-gray-800 mb-6;
+  @apply text-2xl font-bold text-gray-900;
 }
 
 .input {
-  @apply block w-full py-3 px-4 border border-gray-300 rounded-md bg-white text-gray-700 focus:ring-2 focus:ring-blue-400 outline-none transition-all duration-300;
+  @apply w-full py-3 px-4 border border-gray-300 rounded-lg bg-white text-gray-700 focus:ring-4 focus:ring-blue-300 outline-none transition-all duration-300 shadow-sm;
 }
 
 .errorMessage {
-  @apply text-red-500 text-lg mt-3;
+  @apply text-red-500 text-lg mt-2 font-medium;
 }
 
-/* Image Preview Styles */
-.imagePreviewContainer {
-  @apply w-full mt-6 p-5 bg-gray-100 rounded-lg shadow-md text-center;
-}
-
-.previewTitle {
-  @apply text-lg font-semibold text-gray-700 mb-3;
-}
-
-.previewImage {
-  @apply max-w-full h-auto rounded-lg border border-gray-300 shadow-sm;
-}
-
+/* Base64 Output */
 .outputContainer {
-  @apply w-full mt-6 p-5 bg-gray-100 rounded-lg shadow-md;
+  @apply flex flex-col gap-4 bg-gray-100 p-4 rounded-lg border border-gray-300;
 }
 
 .outputTitle {
-  @apply text-lg font-semibold text-gray-700 mb-3;
+  @apply text-lg font-semibold text-gray-700;
 }
 
 .textarea {
-  @apply w-full h-40 p-3 border border-gray-300 rounded-md text-gray-700 font-mono bg-white resize-none focus:ring-2 focus:ring-blue-400 outline-none;
+  @apply w-full h-40 p-3 border border-gray-300 rounded-lg text-gray-700 font-mono bg-gray-50 resize-none shadow-inner;
 }
 
+/* Copy Button */
 .copyButton {
-  @apply flex items-center justify-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-md mt-4 transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400;
+  @apply flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-lg text-lg font-medium shadow-md transition-all duration-300 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300;
 }
 
 .copyIcon {
-  @apply text-lg;
+  @apply text-xl;
 }
 
+/* Right Section: Preview */
+.rightSection {
+  @apply flex flex-col items-center bg-gray-50 p-6 rounded-lg border border-gray-300 shadow-md flex-grow;
+
+  /* Ensuring Flexbox layout with no overflow scrolling */
+  @apply flex flex-col items-center justify-start space-y-4;
+}
+
+.previewTitle {
+  @apply text-lg font-semibold text-gray-700 mb-4;
+}
+
+.noPreview {
+  @apply text-gray-500 italic;
+}
+
+/* Image Preview */
+.previewImage {
+  @apply max-w-full h-auto rounded-lg border border-gray-300 shadow-md;
+  max-height: 100%; /* Prevent image from exceeding container height */
+  object-fit: contain; /* Ensure image maintains aspect ratio */
+}
+
+/* PDF Preview */
+.pdfPreview {
+  @apply w-full h-56 border border-gray-300 rounded-lg shadow-md;
+  object-fit: contain; /* Prevent overflow of the iframe content */
+}
+
+/* Text/JSON Preview */
+.textPreview {
+  @apply w-full h-32 p-3 border border-gray-300 rounded-lg text-gray-700 font-mono bg-gray-50 resize-none shadow-inner;
+}
+
+/* Footer */
 .footer {
-  @apply text-center text-gray-600 py-4 text-sm bg-white shadow-inner;
+  @apply bg-gray-900 text-gray-300 py-6 text-center mt-10 shadow-inner flex flex-col items-center space-y-3;
+}
+
+.footerText {
+  @apply text-sm tracking-wide;
+}
+
+.socialIcons {
+  @apply flex gap-4 text-lg;
+}
+
+.socialIcons a {
+  @apply text-gray-400 transition duration-300 hover:text-white;
 }
